@@ -44,15 +44,39 @@ exports.arraysAnswers = {
     return arr;
   },
 
-  concat: function (arr1, arr2) {},
+  concat: (arr1, arr2) => arr1.concat(arr2),
 
-  insert: function (arr, item, index) {},
+  insert: (arr, item, index) => {
+    arr.splice(index, 0, item);
+    return arr;
+  },
 
-  count: function (arr, item) {},
+  count: (arr, item) => {
+    let count = 0;
+    arr.forEach((element) => (item === element ? count++ : null));
+    return count;
+  },
 
-  duplicates: function (arr) {},
+  duplicates: (arr) => {
+    // created a sorted copy of the giver array
+    const sortedArr = arr.slice().sort();
+    let duplicates = [];
+    sortedArr.forEach((element, index) => {
+      // verify if index is lower than sorted array length & if that element isn't already pushed to the duplicates array
+      if (index < sortedArr.length && duplicates.indexOf(element) === -1) {
+        element === sortedArr[index + 1] ? duplicates.push(element) : null;
+      }
+    });
+    return duplicates;
+  },
 
-  square: function (arr) {},
+  square: (arr) => arr.map((element) => (element = element * element)),
 
-  findAllOccurrences: function (arr, target) {},
+  findAllOccurrences: (arr, target) => {
+    let occurences = [];
+    arr.forEach((element, index) =>
+      element === target ? occurences.push(index) : null
+    );
+    return occurences;
+  },
 };

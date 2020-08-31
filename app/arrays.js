@@ -24,10 +24,10 @@ exports.arraysAnswers = {
     }
     return arr;
   },
-  append: (arr, item) => () => arr.push(item),
-  //   arr.push(item);
-  //   return arr;
-  // },
+  append: (arr, item) => {
+    arr.push(item);
+    return arr;
+  },
 
   truncate: (arr) => {
     arr.pop();

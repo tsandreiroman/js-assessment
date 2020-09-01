@@ -19,5 +19,5 @@ exports.bestPracticesAnswers = {
     return parseInt(num, 10);
   },
 
-  identity: (val1, val2) => (val1 === val2 ? true : false),
+  identity: (val1, val2) => val1 === val2,
 };

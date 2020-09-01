@@ -24,33 +24,33 @@ exports.arraysAnswers = {
     }
     return arr;
   },
-  append: (arr, item) => {
-    arr.push(item);
-    return arr;
-  },
+  append: (arr, item) => [...arr, item],
 
   truncate: (arr) => {
-    arr.pop();
-    return arr;
+    let truncatedArr = [];
+    arr.forEach((element, index) =>
+      index < arr.length - 1 ? truncatedArr.push(element) : null
+    );
+    return truncatedArr;
   },
 
-  prepend: (arr, item) => {
-    arr.unshift(item);
-    return arr;
-  },
+  prepend: (arr, item) => [item, ...arr],
 
   curtail: (arr) => {
-    arr.shift();
-    return arr;
+    let curtailedArr = [];
+    arr.forEach((element, index) =>
+      index > 0 ? curtailedArr.push(element) : null
+    );
+    return curtailedArr;
   },
 
   concat: (arr1, arr2) => arr1.concat(arr2),
 
-  insert: (arr, item, index) => {
-    arr.splice(index, 0, item);
-    return arr;
-  },
-
+  insert: (arr, item, index) => [
+    ...arr.slice(0, index),
+    item,
+    ...arr.slice(index),
+  ],
   count: (arr, item) => {
     let count = 0;
     arr.forEach((element) => (item === element ? count++ : null));

@@ -16,11 +16,18 @@ exports.functionsAnswers = {
   // nu gasesc resurse pe net despre "partial" function, probabil nu caut ce trebuie
   partial: (fn, str1, str2) => (str3) => fn.call(this, str1, str2, str3),
 
-  useArguments: function () {},
+  useArguments: (...arguments) => {
+    let sum = 0;
+    arguments.forEach((arg) => (sum += arg));
+    return sum;
+  },
 
-  callIt: function (fn) {},
+  callIt: (fn, ...arguments) => fn.apply(null, [...arguments]),
 
-  partialUsingArguments: function (fn) {},
+  partialUsingArguments: function (fn, arguments) {
+    let args = Array.prototype.slice.call(arguments, 1);
+    console.log(args);
+  },
 
   curryIt: function (fn) {},
 };

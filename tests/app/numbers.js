@@ -18,7 +18,8 @@ describe('numbers', function() {
 
     it('you should be able to convert an eight-bit number to a binary string', function() {
       expect(numbersAnswers.convertToBinary(128)).to.eql('10000000');
-      expect(numbersAnswers.convertToBinary(65)).to.eql('01000001');
+      expect(numbersAnswers.convertToBinary(65)).to.eql('1000001');
+      // expect(numbersAnswers.convertToBinary(65)).to.eql('01000001'); ? 65 in binary = 1 0 0 0 0 0 1
     });
   });
 

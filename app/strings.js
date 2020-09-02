@@ -67,7 +67,6 @@ exports.stringsAnswers = {
         : (separator = " "); // daca accumulator-ul < "cols"-ul primit ca argument, adaug doar un spatiu
       outputString += separator + word;
     });
-    console.log(outputString);
     return outputString;
   },
 

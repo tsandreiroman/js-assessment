@@ -24,10 +24,19 @@ exports.functionsAnswers = {
 
   callIt: (fn, ...arguments) => fn.apply(null, [...arguments]),
 
-  partialUsingArguments: function (fn, arguments) {
-    let args = Array.prototype.slice.call(arguments, 1);
-    console.log(args);
+  // O functie e "partially" aplicata atunci cand primeste
+  // mai putine argumente decat asteapta,
+  // urmand sa returneze o noua functie care asteapta argumentele ramase
+  partialUsingArguments: function (fn) {
+    // storing the upcoming arguments, "1" is for skipping the function from positon 0
+    let initialArgs = [].slice.call(arguments, 1, arguments.length);
+
+    return function () {
+      return fn.apply(null, [...initialArgs, ...arguments]);
+    };
   },
 
+  // O functie e "curried" atunci primeste, pe rand, cate un argument
+  // si returneaza o noua functie care asteapta urmatorul argument
   curryIt: function (fn) {},
 };

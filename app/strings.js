@@ -3,27 +3,17 @@ exports = typeof window === "undefined" ? global : window;
 exports.stringsAnswers = {
   reduceString: (str, amount) => {
     let output = "";
-    // let outputArray = [];
     const strArray = str.split("");
     const charsEvidence = {};
 
-    // strArray.forEach((char, index) => {
-    //   // console.log(`${char} - ${outputArray[index - 2]}`);
-    //   // console.log(outputArray);
-    //   if (index === 0) {
-    //     outputArray.push(char);
-    //   } else if (
-    //     outputArray[index - amount] &&
-    //     outputArray[index - amount] !== char
-    //   ) {
-    //     outputArray.push(char);
-    //   } else if (
-    //     outputArray[index - amount] &&
-    //     outputArray[index - amount] === char
-    //   ) {
-    //     return;
-    //   } else outputArray.push(char);
+    // strArray.slice().forEach((char, index) => {
+    //   if (index > 1) {
+    //     if (strArray[index - amount] === char) {
+    //       strArray.splice(index, 1);
+    //     }
+    //   } else return;
     // });
+    // console.log(strArray);
 
     strArray.forEach((char, index) => {
       if (!charsEvidence[char]) {
@@ -33,23 +23,12 @@ exports.stringsAnswers = {
       }
 
       if (charsEvidence[char] <= amount) {
-        // console.log(charsEvidence);
+        console.log(charsEvidence);
         output += char; // daca valoarea din obiect a character-ului e mai mica de "amount"-ul primit, il adauga in string-ul "output"
-      } else if (
-        charsEvidence[char] > amount &&
-        output.charAt(index - amount) !== char
-      ) {
-        // daca valoarea din obiect a character-ului e mai mare &
-        // character-ul din string-ul "output" aflat pe "amount" pozitii in spate
-        // nu este egal cu character-ul actual, il adauga in string-ul "output"
-        // NU IMI DAU SEAMA UNDE GRESESC IN LOGICA MEA, ULTIMUL TEST NU TRECE
-        // console.log(output.charAt(index - 1));
-        // console.log(output.charAt(index - 2));
-        output += char;
       }
     });
 
-    // console.log(output);
+    return output;
   },
 
   wordWrap: (str, cols) => {

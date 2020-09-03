@@ -10,9 +10,12 @@ exports.arraysAnswers = {
   //   return sum;
   // },
 
+  // RETURN ANOTHER ARRAY
   remove: (arr, item) => arr.filter((element) => element !== item),
   // every element of the array is compared to the "item", if it is NOT equal to it, it is pushed to the returned array.
+  // filter returneaza un array, continand elementele care respecta conditia impusa
 
+  // RETURN THE ORIGINAL ARRAY
   removeWithoutCopy: (arr, item) => {
     const arrLength = arr.length;
 
@@ -24,10 +27,13 @@ exports.arraysAnswers = {
     }
     return arr;
   },
+
   append: (arr, item) => [...arr, item],
 
   truncate: (arr) => {
-    let truncatedArr = [];
+    const truncatedArr = [];
+
+    // dau push in truncatedArr la fiecare element din arr, mai putin cel de pe ultima pozitie
     arr.forEach((element, index) =>
       index < arr.length - 1 ? truncatedArr.push(element) : null
     );
@@ -37,7 +43,9 @@ exports.arraysAnswers = {
   prepend: (arr, item) => [item, ...arr],
 
   curtail: (arr) => {
-    let curtailedArr = [];
+    const curtailedArr = [];
+
+    // dau push in curtailedArr la fiecare element din arr, mai putin cel de pe prima pozitie
     arr.forEach((element, index) =>
       index > 0 ? curtailedArr.push(element) : null
     );
@@ -46,11 +54,14 @@ exports.arraysAnswers = {
 
   concat: (arr1, arr2) => arr1.concat(arr2),
 
+  // returnez un array avand toate elementele array-ului primit inainte si dupa index-ul specificat
+  // iar pe pozitia indicata, pun elementul cerut
   insert: (arr, item, index) => [
     ...arr.slice(0, index),
     item,
     ...arr.slice(index),
   ],
+
   count: (arr, item) => {
     let count = 0;
     arr.forEach((element) => (item === element ? count++ : null));
@@ -58,11 +69,13 @@ exports.arraysAnswers = {
   },
 
   duplicates: (arr) => {
-    // created a sorted copy of the giver array
-    const sortedArr = arr.slice().sort();
-    let duplicates = [];
+    const sortedArr = arr.slice().sort(); // sorted copy of the given array
+    const duplicates = [];
+
     sortedArr.forEach((element, index) => {
-      // verify if index is lower than sorted array length & if that element isn't already pushed to the duplicates array
+      // 1. index < sortedArr.length -> pentru a ma asigura ca sortedArr[index+1] nu returneaza undefined
+      // 2. duplicates.indexOf(element) === -1 -> verific daca elementul exista deja in "duplicates" array
+      // *** ternary -> daca elementul curent === elementul de pe pozitia urmatoare, dau push in "duplicates" array
       if (index < sortedArr.length && duplicates.indexOf(element) === -1) {
         element === sortedArr[index + 1] ? duplicates.push(element) : null;
       }
@@ -74,9 +87,12 @@ exports.arraysAnswers = {
 
   findAllOccurrences: (arr, target) => {
     let occurences = [];
+
+    // de fiecare data cand elementul cerut este gasit in arr, dau push index-ului sau in "occurences"
     arr.forEach((element, index) =>
       element === target ? occurences.push(index) : null
     );
+
     return occurences;
   },
 };

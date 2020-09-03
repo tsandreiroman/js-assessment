@@ -15,6 +15,7 @@ exports.bestPracticesAnswers = {
     return myObject;
   },
 
+  // parseInt parseaza un string pana in momentul cand intalneste un non-integer
   parseInt: function (num) {
     return parseInt(num, 10);
   },

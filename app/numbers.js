@@ -11,7 +11,7 @@ exports.numbersAnswers = {
     }
 
     // 1. join array elements in a string
-    // 2. return the character at specified index
+    // 2. return the character at specified index ( (bit - 1) bc. charAt starts counting at 0)
     // 3. convert result from string to number
     return parseInt(binaryOfNum.join("").charAt(bit - 1), 10);
   },
@@ -28,6 +28,7 @@ exports.numbersAnswers = {
     });
     return decimal;
   },
+  // parseInt(str,2) -> functioneaza la fel
 
   convertToBinary: (num) => {
     const binaryOfNum = [];

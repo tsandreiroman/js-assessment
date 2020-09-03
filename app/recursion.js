@@ -3,6 +3,8 @@ exports = typeof window === "undefined" ? global : window;
 exports.recursionAnswers = {
   listFiles: (data, dirName) => {
     const filesToReturn = [];
+    // console.log(data);
+    // console.log(dirName);
 
     // This function receives an array of files and checks if it contains files only on the top level
     // or it has more files nested in objects.
@@ -16,10 +18,11 @@ exports.recursionAnswers = {
             )
       );
     };
+
     // DIRNAME IS GIVEN
     if (dirName !== undefined) {
       data.files.forEach((file) =>
-        file.dir && file.dir === "js" ? bringNestedFile(file.files) : null
+        file.dir && file.dir === dirName ? bringNestedFile(file.files) : null
       );
       // DIRNAME ISN'T GIVEN
     } else {
@@ -84,7 +87,7 @@ exports.recursionAnswers = {
     const createCombinations = (index) => {
       // console.log(leftParantheses, rightParantheses);
       // let combination = `${leftParantheses.pop()}${output.forEach(comb => )}${rightParantheses.pop()}`;
-      console.log(combination);
+      // console.log(combination);
     };
 
     for (let index = 0; index < n; index++) {

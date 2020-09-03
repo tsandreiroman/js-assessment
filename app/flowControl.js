@@ -2,11 +2,7 @@ exports = typeof window === "undefined" ? global : window;
 
 exports.flowControlAnswers = {
   fizzBuzz: (num) =>
-    num % 3 === 0
-      ? num % 5 === 0
-        ? "fizzbuzz"
-        : "fizz"
-      : num % 5 === 0
+    num % 3 === 0 ? num % 5 === 0 ? "fizzbuzz"  : "fizz" : num % 5 === 0
       ? "buzz"
       : typeof num === "number"
       ? num

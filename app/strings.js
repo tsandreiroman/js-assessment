@@ -23,7 +23,7 @@ exports.stringsAnswers = {
       }
 
       if (charsEvidence[char] <= amount) {
-        console.log(charsEvidence);
+        // console.log(charsEvidence);
         output += char; // daca valoarea din obiect a character-ului e mai mica de "amount"-ul primit, il adauga in string-ul "output"
       }
     });

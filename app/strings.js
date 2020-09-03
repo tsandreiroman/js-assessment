@@ -2,33 +2,17 @@ exports = typeof window === "undefined" ? global : window;
 
 exports.stringsAnswers = {
   reduceString: (str, amount) => {
-    let output = "";
-    const strArray = str.split("");
-    const charsEvidence = {};
-
-    // strArray.slice().forEach((char, index) => {
-    //   if (index > 1) {
-    //     if (strArray[index - amount] === char) {
-    //       strArray.splice(index, 1);
-    //     }
-    //   } else return;
-    // });
-    // console.log(strArray);
+    const arrayToReturn = [];
+    let strArray = str.split("");
 
     strArray.forEach((char, index) => {
-      if (!charsEvidence[char]) {
-        charsEvidence[char] = 1; // daca nu exista character-ul deja in obiect, il creeaza avand valoarea "1"
-      } else {
-        charsEvidence[char] += 1; // daca deja exista, il itereaza cu 1
-      }
-
-      if (charsEvidence[char] <= amount) {
-        // console.log(charsEvidence);
-        output += char; // daca valoarea din obiect a character-ului e mai mica de "amount"-ul primit, il adauga in string-ul "output"
-      }
+      if (index > 0) {
+        if (char === strArray[index - amount]) {
+          return;
+        } else arrayToReturn.push(char);
+      } else arrayToReturn.push(char);
     });
-
-    return output;
+    return arrayToReturn.join("");
   },
 
   wordWrap: (str, cols) => {
@@ -49,5 +33,5 @@ exports.stringsAnswers = {
     return outputString;
   },
 
-  reverseString: (str) => str.slice().split("").reverse().join(""),
+  reverseString: (str) => str.split("").reverse().join(""),
 };

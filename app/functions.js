@@ -35,5 +35,15 @@ exports.functionsAnswers = {
 
   // O functie e "curried" atunci primeste, pe rand, cate un argument
   // si returneaza o noua functie care asteapta urmatorul argument
-  curryIt: function (fn) {},
+  curryIt: (fn) => {
+    const args = [];
+    let fnLength = fn.length;
+
+    return function makeCurry(arg) {
+      args.push(arg);
+      if (args.length < fnLength) {
+        return makeCurry;
+      } else return fn.apply(null, args);
+    };
+  },
 };

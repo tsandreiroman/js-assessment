@@ -57,9 +57,7 @@ exports.numbersAnswers = {
     // shorty, result looks like this: result = (multipliedNumber * multipliedNumber) / divider(multiplier)
     result =
       ((firstValue.leveledUpNumber ? firstValue.leveledUpNumber : firstValue) *
-        (secondValue.leveledUpNumber
-          ? secondValue.leveledUpNumber
-          : secondValue)) /
+        (secondValue.leveledUpNumber ? secondValue.leveledUpNumber : secondValue)) /
       ((firstValue.divider ? firstValue.divider : 1) *
         (secondValue.divider ? secondValue.divider : 1));
 

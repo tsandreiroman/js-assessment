@@ -7,9 +7,12 @@ exports.objectsAnswers = {
   alterObjects: (constructor, greeting) =>
     (constructor.prototype.greeting = greeting),
 
-  iterate: (obj) => {
-    let keysValues = [];
-    Object.keys(obj).forEach((key) => keysValues.push(`${key}: ${obj[key]}`));
-    return keysValues;
-  },
+  iterate: (obj) => Object.keys(obj).map((key) => `${key}: ${obj[key]}`),
+  // {
+  // let answers = [];
+  // for (property in obj) {
+  //   if (obj.hasOwnProperty(property)) {
+  //     answers.push(`${property}: ${obj[property]}`);
+  //   }
+  // }
 };

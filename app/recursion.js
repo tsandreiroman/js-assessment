@@ -3,35 +3,31 @@ exports = typeof window === "undefined" ? global : window;
 exports.recursionAnswers = {
   listFiles: (data, dirName) => {
     const filesToReturn = [];
-    // console.log(data);
-    // console.log(dirName);
 
-    // This function receives an array of files and checks if it contains files only on the top level
-    // or it has more files nested in objects.
-    // If it has nested files, same logic is applied.
-    const bringNestedFile = (filesArray) => {
-      filesArray.forEach((nestedFile) =>
-        typeof nestedFile === "string"
-          ? filesToReturn.push(nestedFile)
-          : nestedFile.files.forEach((tooNestedFile) =>
-              filesToReturn.push(tooNestedFile)
-            )
-      );
-    };
-
-    // DIRNAME IS GIVEN
-    if (dirName !== undefined) {
-      data.files.forEach((file) =>
-        file.dir && file.dir === dirName ? bringNestedFile(file.files) : null
-      );
-      // DIRNAME ISN'T GIVEN
-    } else {
-      data.files.forEach((file) =>
-        typeof file === "string"
-          ? filesToReturn.push(file)
-          : bringNestedFile(file.files)
-      );
+    function walkThroughFiles(givenData, givenDirName) {
+      // DIRNAME IS GIVEN
+      if (givenDirName !== undefined) {
+        if (givenData.dir && givenData.dir === givenDirName) {
+          givenData.files.forEach((content) =>
+            typeof content === "string" ? filesToReturn.push(content) : null
+          );
+        } else if (givenData.dir && givenData.dir !== givenDirName) {
+          givenData.files.forEach((content) => {
+            if (content.dir && content.dir === givenDirName) {
+              walkThroughFiles(content);
+            }
+          });
+        }
+        // DIRNAME ISN'T GIVEN
+      } else {
+        givenData.files.forEach((content) => {
+          if (typeof content === "string") {
+            filesToReturn.push(content);
+          } else walkThroughFiles(content);
+        });
+      }
     }
+    walkThroughFiles(data, dirName);
 
     return filesToReturn;
   },

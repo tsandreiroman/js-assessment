@@ -127,8 +127,8 @@ describe('functions', function() {
     var result;
 
     result = functionsAnswers.curryIt(curryMe);
-    expect(typeof result).to.eql('function');
-    expect(result.length).to.eql(1);
+    expect(typeof result).to.eql('function'); // curryIt trebuie sa returneze o functie
+    expect(result.length).to.eql(1); // functia returnata trebuie sa aiba doar un parametru
 
     result = functionsAnswers.curryIt(curryMe)(a);
     expect(typeof result).to.eql('function');

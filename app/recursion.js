@@ -81,9 +81,17 @@ exports.recursionAnswers = {
     })();
 
     const createCombinations = (index) => {
-      // console.log(leftParantheses, rightParantheses);
-      // let combination = `${leftParantheses.pop()}${output.forEach(comb => )}${rightParantheses.pop()}`;
-      // console.log(combination);
+      if ((leftParantheses.length === rightParantheses.length) === 0) {
+        return;
+      }
+      if (leftParantheses.length > rightParantheses.length) {
+        return;
+      }
+      if (
+        leftParantheses.length === rightParantheses.length ||
+        leftParantheses.length < rightParantheses.length
+      ) {
+      }
     };
 
     for (let index = 0; index < n; index++) {

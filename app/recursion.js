@@ -7,13 +7,13 @@ exports.recursionAnswers = {
     function walkThroughFiles(givenData, givenDirName) {
       // DIRNAME IS GIVEN
       if (givenDirName !== undefined) {
-        if (givenData.dir && givenData.dir === givenDirName) {
+        if (givenData.dir && givenData.dir === givenDirName) { // am ajuns in directorul cerut
           givenData.files.forEach((content) =>
             typeof content === "string" ? filesToReturn.push(content) : null
           );
-        } else if (givenData.dir && givenData.dir !== givenDirName) {
+        } else if (givenData.dir && givenData.dir !== givenDirName) { // nu sunt in directorul cerut
           givenData.files.forEach((content) => {
-            if (content.dir && content.dir === givenDirName) {
+            if (content.dir && content.dir === givenDirName) { // sunt in directorul cerut
               walkThroughFiles(content);
             }
           });

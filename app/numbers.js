@@ -35,7 +35,7 @@ exports.numbersAnswers = {
   // },
   // parseInt(str,2) -> functioneaza la fel
 
-  convertToBinary: (num) => num.toString(2)
+  convertToBinary: (num) => num.toString(2),
     // i << i -> 1 << 7 = 10000000 = 128 | 1 << 6 = 01000000 = 64 | ... | 1 << 0 = 00000001 = 1
     // num & (1 << i) -> 128 & 128 =  128 | 128 & 64 = 10000000 & 01000000 = 0 | ... | 128 & 0 = 0
     // DE CE 128 & 128 E EVALUAT CA FIIND TRUE
@@ -59,7 +59,7 @@ exports.numbersAnswers = {
     // }
 
     // return binaryOfNum.reverse().join("");
-  },
+  // },
 
   multiply: (a, b) => {
     let result = 0;
